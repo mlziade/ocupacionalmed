@@ -85,7 +85,7 @@ export default function Footer() {
           <p>
             &copy; {year} OcupacionalMED. Todos os direitos reservados.
           </p>
-          <p>Desenvolvido com foco em saúde e segurança ocupacional.</p>
+          <p>Desenvolvido com foco em saúde e segurança ocupacional</p>
         </div>
       </div>
     </footer>
