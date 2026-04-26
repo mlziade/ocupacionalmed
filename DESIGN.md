@@ -27,49 +27,51 @@ colors:
   on-background: "#1a1a1a"
 
 # ─── Typography ──────────────────────────────────────────────────────────────
-# Font: Inter (Google Fonts) — replaces the original Arial stack.
-# Inter is geometric and highly legible, suited for data-heavy healthcare interfaces.
+# Two-font system:
+#   Headings → Lato (geometric, bold-friendly, strong brand presence)
+#   Body     → Source Sans 3 (humanist, highly legible at small sizes)
+# Both loaded via Google Fonts <link> in layout.tsx.
 typography:
   headline-lg:
-    fontFamily: Inter
+    fontFamily: Lato
     fontSize: 24px
-    fontWeight: "700"
+    fontWeight: "900"
     lineHeight: 1.2
     letterSpacing: -0.01em
 
   headline-md:
-    fontFamily: Inter
+    fontFamily: Lato
     fontSize: 18px
     fontWeight: "700"
     lineHeight: 1.3
 
   headline-sm:
-    fontFamily: Inter           # Maps to existing 15px bold section headers
+    fontFamily: Lato
     fontSize: 15px
     fontWeight: "700"
     lineHeight: 1.3
 
   body-lg:
-    fontFamily: Inter           # Maps to existing 14px intro/description text
+    fontFamily: Source Sans 3
     fontSize: 14px
     fontWeight: "400"
     lineHeight: 1.5
 
   body-md:
-    fontFamily: Inter           # Base body size across the current site
+    fontFamily: Source Sans 3
     fontSize: 13px
     fontWeight: "400"
     lineHeight: 1.5
 
   label-md:
-    fontFamily: Inter
+    fontFamily: Lato
     fontSize: 13px
     fontWeight: "700"
     lineHeight: 1
     letterSpacing: 0em
 
   label-sm:
-    fontFamily: Inter
+    fontFamily: Source Sans 3
     fontSize: 12px
     fontWeight: "400"
     lineHeight: 1
@@ -184,17 +186,20 @@ The palette is rooted in the brand's long-established green identity, conveying 
 
 ## Typography
 
-**Font family: Inter** (Google Fonts, loaded via `next/font/google`). Inter is geometric and highly legible at small sizes, well-suited for data-heavy interfaces like occupational health portals. It replaces the original Arial stack while preserving the professional, neutral tone.
+**Two-font system**, both loaded via Google Fonts `<link>` in `layout.tsx`:
 
-The type scale maps directly to the existing content hierarchy:
+- **Lato** (headings, labels, nav, buttons) — geometric with strong bold variants (700, 900). Gives the brand a confident, professional presence.
+- **Source Sans 3** (body text, form inputs, captions) — humanist and highly legible at 13–14px. Comfortable for reading lists and descriptions.
 
-- **headline-lg (24px/700):** Page-level titles, e.g. "Bem-vindo ao Portal OcupacionalMED".
-- **headline-sm (15px/700):** Section card headers, e.g. "Parceiros", "Empresas", "Recursos do Sistema".
-- **body-md (13px/400, lh 1.5):** Base body text — feature bullet lists, form descriptions.
-- **label-md (13px/700):** Navigation links, form field labels, button text.
-- **label-sm (12px/400):** Badge text, metadata captions.
+The type scale:
 
-Weight (regular vs. bold) is the primary differentiator — avoid introducing additional weights beyond 400 and 700.
+- **headline-lg (24px/900, Lato):** Hero and page-level titles.
+- **headline-sm (15px/700, Lato):** Section card headers, e.g. "Parceiros", "Empresas".
+- **body-md (13px/400, Source Sans 3, lh 1.5):** Feature bullet lists, form descriptions.
+- **label-md (13px/700, Lato):** Navigation links, form labels, button text.
+- **label-sm (12px/400, Source Sans 3):** Badge text, metadata captions.
+
+Use only weights 400 and 700 (and 900 for hero headlines) — avoid mixing more than two weights in one section.
 
 ## Layout
 
@@ -241,7 +246,7 @@ The header is **sticky** (`position: sticky; top: 0`) with a white `surface` bac
 
 ### Footer
 
-Background: `secondary` (#4A864A, medium green). Text: `on-secondary` (white) for the brand name in bold, slightly muted white (80% opacity) for the tagline. No border or divider — the color shift from the page is sufficient. Content: `Portal OcupacionalMED — {year}` and `Rede de Segurança & Medicina Ocupacional`.
+Background: `secondary` (#4A864A). Three-column grid on desktop (brand/social | Quick Links | Contact snippet), stacked on mobile. Brand name in Lato Black; tagline at 80% opacity. Quick Links use `on-secondary/80` with full-opacity on hover. A thin `on-secondary/20` divider separates the grid from the copyright bar. LinkedIn icon links to the company LinkedIn page. Copyright bar: `© {year} OcupacionalMED. Todos os direitos reservados.`
 
 ## Do's and Don'ts
 

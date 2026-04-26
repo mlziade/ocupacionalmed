@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 
@@ -30,14 +31,16 @@ export default function Header() {
     <header className="sticky top-0 z-50 bg-surface border-b border-outline-variant shadow-sm">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         {/* Brand + nav */}
-        <div className="flex items-center justify-between py-3">
-          <Link href="/" className="flex flex-col leading-tight">
-            <span className="text-xl font-bold text-primary tracking-tight">
-              OcupacionalMED
-            </span>
-            <span className="text-[11px] text-on-surface-variant font-medium">
-              Rede de Segurança e Medicina Ocupacional
-            </span>
+        <div className="flex items-center justify-between py-2">
+          <Link href="/" className="flex items-center gap-3">
+            <Image
+              src="/logo_ocupacionalmed_transparente.png"
+              alt="OcupacionalMED"
+              width={140}
+              height={52}
+              className="h-12 w-auto object-contain"
+              priority
+            />
           </Link>
 
           {/* Desktop nav */}
@@ -51,6 +54,7 @@ export default function Header() {
                     ? "text-primary"
                     : "text-on-background hover:text-primary"
                 }`}
+                style={{ fontFamily: "Lato, Arial, sans-serif" }}
               >
                 {label}
               </Link>
@@ -60,6 +64,7 @@ export default function Header() {
               className="text-sm font-bold px-4 py-2 bg-primary text-on-primary rounded-lg
                          hover:bg-primary-container hover:text-on-primary-container
                          transition-colors duration-150"
+              style={{ fontFamily: "Lato, Arial, sans-serif" }}
             >
               Acesso ao Sistema
             </a>
@@ -71,26 +76,11 @@ export default function Header() {
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Abrir menu"
           >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {menuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               )}
             </svg>
           </button>
@@ -99,7 +89,7 @@ export default function Header() {
         {/* Date welcome bar */}
         {date && (
           <div className="py-1 border-t border-outline-variant text-[11px] text-on-surface-variant">
-            {date}. Bem-vindo ao Portal OcupacionalMED
+            {date} &mdash; Bem-vindo ao Portal OcupacionalMED
           </div>
         )}
       </div>
