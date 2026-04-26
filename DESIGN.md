@@ -4,75 +4,77 @@ name: OcupacionalMED
 description: Design system for OcupacionalMED — Rede de Segurança e Medicina Ocupacional.
 
 # ─── Colors ──────────────────────────────────────────────────────────────────
-# Fill in your hex values. Common roles: primary (brand/CTAs), secondary
-# (accents), tertiary (highlights), neutral (backgrounds/text).
+# Extracted from ocupacionalmed.com.br (css/style.css + inline styles).
 colors:
-  primary: "#TODO"           # Main brand color — used for CTAs and key actions
-  on-primary: "#TODO"        # Text/icons placed on top of primary
-  primary-container: "#TODO" # Lighter tint of primary for backgrounds
-  on-primary-container: "#TODO"
-  secondary: "#TODO"         # Supporting accent color
-  on-secondary: "#TODO"
-  secondary-container: "#TODO"
-  on-secondary-container: "#TODO"
-  tertiary: "#TODO"          # Optional third accent (e.g. alerts, highlights)
-  on-tertiary: "#TODO"
-  surface: "#TODO"           # Page/card backgrounds
-  on-surface: "#TODO"        # Body text color
-  on-surface-variant: "#TODO" # Subtler text: captions, metadata, placeholders
-  outline: "#TODO"           # Borders and dividers
-  outline-variant: "#TODO"   # Lighter/secondary borders
-  error: "#TODO"             # Error states
-  on-error: "#TODO"
-  background: "#TODO"        # Global page background
-  on-background: "#TODO"     # Default text on the page background
+  primary: "#006600"            # Brand dark green — CTAs, section headers, key text
+  on-primary: "#ffffff"
+  primary-container: "#D0EFBC"  # Light green — form row backgrounds, hover fills
+  on-primary-container: "#006600"
+  secondary: "#4A864A"          # Medium green — section header bars (Parceiros, Empresas…)
+  on-secondary: "#ffffff"
+  secondary-container: "#B4FCB1" # Very light green — page body background tint
+  on-secondary-container: "#006600"
+  tertiary: "#CC0000"           # Red accent — used sparingly (footer brand highlight)
+  on-tertiary: "#ffffff"
+  surface: "#ffffff"            # Card and content area backgrounds
+  on-surface: "#1a1a1a"         # Body text (softened from pure #000000)
+  on-surface-variant: "#4A864A" # Secondary text: captions, metadata, placeholders
+  outline: "#000000"            # Strong borders (main table frame)
+  outline-variant: "#EAEAEA"    # Subtle card dividers and inner borders
+  error: "#CC0000"              # Validation errors
+  on-error: "#ffffff"
+  background: "#F0FCF0"         # Global page background (refined from #B4FCB1)
+  on-background: "#1a1a1a"
 
 # ─── Typography ──────────────────────────────────────────────────────────────
-# Fill in fontFamily, fontSize, fontWeight, lineHeight, letterSpacing.
+# Current site uses Arial at 13px base. Scales below are derived from the
+# existing size usage (13px body, 14px intro, 15px section headers).
+# TODO: Replace "Arial" with a Google Font (e.g. Inter, Plus Jakarta Sans)
+# once the new font is decided.
 typography:
   headline-lg:
-    fontFamily: TODO          # e.g. "Inter", "Plus Jakarta Sans"
-    fontSize: TODO            # e.g. 36px
-    fontWeight: "TODO"        # e.g. "700"
-    lineHeight: TODO          # e.g. 44px or 1.2
-    letterSpacing: TODO       # e.g. -0.02em
+    fontFamily: Arial
+    fontSize: 24px
+    fontWeight: "700"
+    lineHeight: 1.2
+    letterSpacing: -0.01em
 
   headline-md:
-    fontFamily: TODO
-    fontSize: TODO
-    fontWeight: "TODO"
-    lineHeight: TODO
+    fontFamily: Arial
+    fontSize: 18px
+    fontWeight: "700"
+    lineHeight: 1.3
 
   headline-sm:
-    fontFamily: TODO
-    fontSize: TODO
-    fontWeight: "TODO"
-    lineHeight: TODO
+    fontFamily: Arial           # Maps to existing 15px bold section headers
+    fontSize: 15px
+    fontWeight: "700"
+    lineHeight: 1.3
 
   body-lg:
-    fontFamily: TODO
-    fontSize: TODO
-    fontWeight: "TODO"
-    lineHeight: TODO
+    fontFamily: Arial           # Maps to existing 14px intro/description text
+    fontSize: 14px
+    fontWeight: "400"
+    lineHeight: 1.5
 
   body-md:
-    fontFamily: TODO
-    fontSize: TODO
-    fontWeight: "TODO"
-    lineHeight: TODO
+    fontFamily: Arial           # Base body size across the current site
+    fontSize: 13px
+    fontWeight: "400"
+    lineHeight: 1.5
 
   label-md:
-    fontFamily: TODO
-    fontSize: TODO
-    fontWeight: "TODO"
-    lineHeight: TODO
-    letterSpacing: TODO
+    fontFamily: Arial
+    fontSize: 13px
+    fontWeight: "700"
+    lineHeight: 1
+    letterSpacing: 0em
 
   label-sm:
-    fontFamily: TODO
-    fontSize: TODO
-    fontWeight: "TODO"
-    lineHeight: TODO
+    fontFamily: Arial
+    fontSize: 12px
+    fontWeight: "400"
+    lineHeight: 1
 
 # ─── Rounded ─────────────────────────────────────────────────────────────────
 rounded:
@@ -181,28 +183,30 @@ components:
 
 ## Colors
 
-<!-- TODO: Describe the palette in prose. For each color token, explain its
-     role and the intent behind it. Use the color names you gave in the YAML.
+The palette is rooted in the brand's long-established green identity, conveying health, safety, and reliability.
 
-     Suggested structure:
-     - **Primary (#TODO):** [What it represents, where it's used]
-     - **Secondary (#TODO):** [Supporting role]
-     - **Surface / Background (#TODO):** [Page feel — warm white, cool white, off-white?]
-     - **On-Surface (#TODO):** [Body text, icon color]
-     - **Error (#TODO):** [How error states look]
--->
+- **Primary (#006600):** The core brand dark green. Used for section header bars, key labels, button text, and any primary call-to-action. High contrast against white ensures readability.
+- **Secondary (#4A864A):** A mid-tone green for supporting UI surfaces such as card headers and active nav indicators — slightly softer than the primary to create tonal depth.
+- **Primary Container (#D0EFBC):** A light, muted green for form row backgrounds, hover fills, and subtle tinted surfaces that need a green connection without heavy contrast.
+- **Surface / Background (#F0FCF0 / #ffffff):** White card surfaces on a very light green page background. Keeps the UI feeling fresh and clinical without being sterile.
+- **Tertiary (#CC0000):** A restrained red accent, used exclusively for the brand wordmark in the footer and critical error highlights. Never use for decorative purposes.
+- **On-Surface (#1a1a1a):** Near-black for all body text — softened from pure black to reduce harshness on white backgrounds.
+- **On-Surface Variant (#4A864A):** Medium green for secondary text such as captions, metadata, and placeholder labels.
+- **Outline (#000000 / #EAEAEA):** Strong black for the main layout border; light gray for inner card dividers.
 
 ## Typography
 
-<!-- TODO: Describe the font strategy. Answer:
-     - Which font(s) are you using and why? (Google Fonts recommended for Next.js)
-     - What tone do they convey? (geometric = modern/tech, humanist = friendly,
-       serif = authoritative)
-     - Any special treatments? (all-caps labels, tight letter-spacing on headlines)
+The current site uses a single font stack: **Arial** at a 13px base, scaling to 14px for introductory text and 15px bold for section headers. The hierarchy is minimal — weight (regular vs. bold) is the primary differentiator.
 
-     Common choices for healthcare/SaaS: Inter, Plus Jakarta Sans, DM Sans,
-     Nunito, Figtree.
--->
+- **Headlines:** Bold weight at 15–24px, used for section identifiers like "Parceiros", "Empresas", and "Recursos do Sistema".
+- **Body:** Regular weight at 13–14px with 1.5 line height for list items and descriptive paragraphs.
+- **Labels:** Bold 13px for form field labels and navigation links.
+
+> **TODO — Font upgrade:** For the new Next.js site, replace Arial with a Google Font. Recommended options that preserve the professional/clinical tone:
+> - **Inter** — geometric, highly legible, excellent for data-heavy interfaces.
+> - **Plus Jakarta Sans** — humanist, slightly warmer, good for a more approachable healthcare feel.
+> - **DM Sans** — clean and modern with a neutral character.
+> Once chosen, update all `fontFamily` values in the YAML above and adjust `fontSize` / `lineHeight` to match the new type scale.
 
 ## Layout
 
