@@ -65,7 +65,6 @@ export default function ParceirosPage() {
                   alt={partner.name}
                   width={partner.logoWidth}
                   height={partner.logoHeight}
-                  unoptimized
                   className="max-h-16 w-auto object-contain"
                 />
                 <p className="text-[13px] text-on-surface-variant text-center leading-relaxed">

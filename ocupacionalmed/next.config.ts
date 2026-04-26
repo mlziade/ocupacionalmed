@@ -5,7 +5,11 @@ const nextConfig: NextConfig = {
   basePath: "/ocupacionalmed",
   trailingSlash: true,
   images: {
-    unoptimized: true,
+    loader: "custom",
+    loaderFile: "./image-loader.ts",
+  },
+  env: {
+    NEXT_PUBLIC_BASE_PATH: "/ocupacionalmed",
   },
 };
 
