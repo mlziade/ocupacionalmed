@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx create-next-app@latest ocupacionalmed --yes)",
+      "Bash(npm install *)",
+      "Bash(npm run *)"
+    ]
+  }
+}

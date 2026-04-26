@@ -27,72 +27,70 @@ colors:
   on-background: "#1a1a1a"
 
 # ─── Typography ──────────────────────────────────────────────────────────────
-# Current site uses Arial at 13px base. Scales below are derived from the
-# existing size usage (13px body, 14px intro, 15px section headers).
-# TODO: Replace "Arial" with a Google Font (e.g. Inter, Plus Jakarta Sans)
-# once the new font is decided.
+# Font: Inter (Google Fonts) — replaces the original Arial stack.
+# Inter is geometric and highly legible, suited for data-heavy healthcare interfaces.
 typography:
   headline-lg:
-    fontFamily: Arial
+    fontFamily: Inter
     fontSize: 24px
     fontWeight: "700"
     lineHeight: 1.2
     letterSpacing: -0.01em
 
   headline-md:
-    fontFamily: Arial
+    fontFamily: Inter
     fontSize: 18px
     fontWeight: "700"
     lineHeight: 1.3
 
   headline-sm:
-    fontFamily: Arial           # Maps to existing 15px bold section headers
+    fontFamily: Inter           # Maps to existing 15px bold section headers
     fontSize: 15px
     fontWeight: "700"
     lineHeight: 1.3
 
   body-lg:
-    fontFamily: Arial           # Maps to existing 14px intro/description text
+    fontFamily: Inter           # Maps to existing 14px intro/description text
     fontSize: 14px
     fontWeight: "400"
     lineHeight: 1.5
 
   body-md:
-    fontFamily: Arial           # Base body size across the current site
+    fontFamily: Inter           # Base body size across the current site
     fontSize: 13px
     fontWeight: "400"
     lineHeight: 1.5
 
   label-md:
-    fontFamily: Arial
+    fontFamily: Inter
     fontSize: 13px
     fontWeight: "700"
     lineHeight: 1
     letterSpacing: 0em
 
   label-sm:
-    fontFamily: Arial
+    fontFamily: Inter
     fontSize: 12px
     fontWeight: "400"
     lineHeight: 1
 
 # ─── Rounded ─────────────────────────────────────────────────────────────────
 rounded:
-  sm: TODO     # e.g. 4px  — form fields, badges
-  md: TODO     # e.g. 8px  — cards, modals
-  lg: TODO     # e.g. 12px — buttons
-  xl: TODO     # e.g. 16px — hero cards, panels
+  sm: 4px      # form fields, tight badges
+  md: 8px      # modals, dropdowns
+  lg: 12px     # buttons, action chips
+  xl: 16px     # service cards, hero panels
   full: 9999px # pills / avatars — keep as-is unless you want a different style
 
 # ─── Spacing ─────────────────────────────────────────────────────────────────
 spacing:
-  xs: TODO      # e.g. 4px
-  sm: TODO      # e.g. 8px
-  md: TODO      # e.g. 16px
-  lg: TODO      # e.g. 32px
-  xl: TODO      # e.g. 64px
-  gutter: TODO  # Column gutter for the grid, e.g. 24px
-  margin: TODO  # Outer page margins, e.g. 32px
+  xs: 4px
+  sm: 8px
+  md: 16px
+  lg: 32px
+  xl: 64px
+  gutter: 24px  # Column gutter in the card grid
+  margin: 32px  # Outer horizontal page margin (scales to 64px on desktop)
 
 # ─── Components ──────────────────────────────────────────────────────────────
 components:
@@ -101,20 +99,21 @@ components:
     textColor: "{colors.on-primary}"
     typography: "{typography.label-md}"
     rounded: "{rounded.lg}"
-    padding: TODO             # e.g. 12px 24px
-    height: TODO              # e.g. 48px
+    padding: 10px 24px
+    height: 40px
 
   button-primary-hover:
     backgroundColor: "{colors.primary-container}"
     textColor: "{colors.on-primary-container}"
+    transition: background-color 150ms ease-out
 
   button-secondary:
     backgroundColor: "{colors.secondary}"
     textColor: "{colors.on-secondary}"
     typography: "{typography.label-md}"
     rounded: "{rounded.lg}"
-    padding: TODO
-    height: TODO
+    padding: 10px 24px
+    height: 40px
 
   button-secondary-hover:
     backgroundColor: "{colors.secondary-container}"
@@ -125,31 +124,36 @@ components:
     textColor: "{colors.primary}"
     typography: "{typography.label-md}"
     rounded: "{rounded.lg}"
-    padding: TODO
+    padding: 10px 24px
 
   card-service:                # Cards for the service/feature tiles
     backgroundColor: "{colors.surface}"
     textColor: "{colors.on-surface}"
     rounded: "{rounded.xl}"
-    padding: TODO
+    padding: 20px
+    border: 1px solid "{colors.outline-variant}"
+    shadow: 0 2px 8px rgba(0,0,0,0.06)
 
   card-service-hover:
     backgroundColor: "{colors.primary-container}"
+    shadow: 0 4px 16px rgba(0,0,0,0.10)
 
   input-field:
     backgroundColor: "{colors.surface}"
     textColor: "{colors.on-surface}"
     typography: "{typography.body-md}"
-    rounded: "{rounded.md}"
-    padding: TODO
-    height: TODO
+    rounded: "{rounded.sm}"
+    padding: 8px 12px
+    height: 40px
+    border: 1px solid "{colors.outline-variant}"
+    focusRing: 2px solid "{colors.primary}" at 40% opacity
 
   badge-status:               # e.g. "Parceiros", "Empresas" tags
     backgroundColor: "{colors.secondary-container}"
     textColor: "{colors.on-secondary-container}"
     typography: "{typography.label-sm}"
     rounded: "{rounded.full}"
-    padding: TODO
+    padding: 4px 12px
 
   nav-link:
     textColor: "{colors.on-background}"
@@ -163,132 +167,89 @@ components:
 
 ## Overview
 
-<!-- TODO: Write 2–4 sentences describing the brand personality and the visual
-     feeling you want this site to evoke. Think about:
-     - Who is the audience? (HR managers, company medical departments, partner
-       clinicians, individual workers)
-     - What emotion should the UI trigger? (trust, reliability, efficiency,
-       modernity, accessibility)
-     - Any reference aesthetic? (clinical white & blue, modern SaaS dashboard,
-       government portal, warm healthcare, etc.)
-
-     Example to replace:
-     OcupacionalMED's visual identity communicates trust, precision, and
-     modern professionalism to HR teams and occupational health providers in
-     Brazil. The aesthetic is clean and clinical without feeling cold — warm
-     neutral backgrounds with a primary brand color that drives action. The UI
-     should feel as reliable as a well-run clinic: organized, fast to navigate,
-     and free of visual noise.
--->
+OcupacionalMED's visual identity communicates trust, reliability, and modern professionalism to HR teams, company medical departments, partner clinicians, and occupational health providers in Brazil. The aesthetic balances clinical precision with an approachable, human warmth — a green-forward palette evokes health, safety, and nature while clean white surfaces ensure information clarity. The UI should feel organized and efficient, like a well-run clinic: fast to navigate, information-dense where needed, and completely free of visual clutter. The primary audience is professionals (not consumers), so density and legibility are prioritized over decorative flair.
 
 ## Colors
 
 The palette is rooted in the brand's long-established green identity, conveying health, safety, and reliability.
 
-- **Primary (#006600):** The core brand dark green. Used for section header bars, key labels, button text, and any primary call-to-action. High contrast against white ensures readability.
-- **Secondary (#4A864A):** A mid-tone green for supporting UI surfaces such as card headers and active nav indicators — slightly softer than the primary to create tonal depth.
-- **Primary Container (#D0EFBC):** A light, muted green for form row backgrounds, hover fills, and subtle tinted surfaces that need a green connection without heavy contrast.
-- **Surface / Background (#F0FCF0 / #ffffff):** White card surfaces on a very light green page background. Keeps the UI feeling fresh and clinical without being sterile.
-- **Tertiary (#CC0000):** A restrained red accent, used exclusively for the brand wordmark in the footer and critical error highlights. Never use for decorative purposes.
-- **On-Surface (#1a1a1a):** Near-black for all body text — softened from pure black to reduce harshness on white backgrounds.
-- **On-Surface Variant (#4A864A):** Medium green for secondary text such as captions, metadata, and placeholder labels.
-- **Outline (#000000 / #EAEAEA):** Strong black for the main layout border; light gray for inner card dividers.
+- **Primary (#006600):** The core brand dark green. Used for page headings, key labels, button backgrounds, and any primary call-to-action. High contrast against white ensures readability.
+- **Secondary (#4A864A):** A mid-tone green for supporting UI surfaces such as card header bars and the footer background — slightly softer than the primary to create tonal depth.
+- **Primary Container (#D0EFBC):** A light, muted green for card hover fills and tinted surfaces that need a green connection without heavy contrast.
+- **Surface / Background (#ffffff / #F0FCF0):** White card surfaces on a very light green page background. Keeps the UI feeling fresh and clinical without being sterile.
+- **Tertiary (#CC0000):** A restrained red accent, reserved for the brand wordmark in the footer and validation error states. Never use for decorative purposes.
+- **On-Surface (#1a1a1a):** Near-black for all body text — softened from pure black to reduce visual harshness on white backgrounds.
+- **On-Surface Variant (#4A864A):** Medium green for secondary text such as section metadata, form labels, and placeholder labels.
+- **Outline Variant (#EAEAEA):** Light gray for card borders and inner dividers — keeps cards visually distinct without heavy outlines.
 
 ## Typography
 
-The current site uses a single font stack: **Arial** at a 13px base, scaling to 14px for introductory text and 15px bold for section headers. The hierarchy is minimal — weight (regular vs. bold) is the primary differentiator.
+**Font family: Inter** (Google Fonts, loaded via `next/font/google`). Inter is geometric and highly legible at small sizes, well-suited for data-heavy interfaces like occupational health portals. It replaces the original Arial stack while preserving the professional, neutral tone.
 
-- **Headlines:** Bold weight at 15–24px, used for section identifiers like "Parceiros", "Empresas", and "Recursos do Sistema".
-- **Body:** Regular weight at 13–14px with 1.5 line height for list items and descriptive paragraphs.
-- **Labels:** Bold 13px for form field labels and navigation links.
+The type scale maps directly to the existing content hierarchy:
 
-> **TODO — Font upgrade:** For the new Next.js site, replace Arial with a Google Font. Recommended options that preserve the professional/clinical tone:
-> - **Inter** — geometric, highly legible, excellent for data-heavy interfaces.
-> - **Plus Jakarta Sans** — humanist, slightly warmer, good for a more approachable healthcare feel.
-> - **DM Sans** — clean and modern with a neutral character.
-> Once chosen, update all `fontFamily` values in the YAML above and adjust `fontSize` / `lineHeight` to match the new type scale.
+- **headline-lg (24px/700):** Page-level titles, e.g. "Bem-vindo ao Portal OcupacionalMED".
+- **headline-sm (15px/700):** Section card headers, e.g. "Parceiros", "Empresas", "Recursos do Sistema".
+- **body-md (13px/400, lh 1.5):** Base body text — feature bullet lists, form descriptions.
+- **label-md (13px/700):** Navigation links, form field labels, button text.
+- **label-sm (12px/400):** Badge text, metadata captions.
+
+Weight (regular vs. bold) is the primary differentiator — avoid introducing additional weights beyond 400 and 700.
 
 ## Layout
 
-<!-- TODO: Describe the grid and spacing philosophy. Answer:
-     - Mobile-first or desktop-first?
-     - Column grid: 12-col for desktop? 4-col for mobile?
-     - Max content width (e.g. 1280px, 1440px)?
-     - Spacing philosophy: generous whitespace or information-dense?
-     - Section vertical rhythm: how much breathing room between page sections?
--->
+- **Mobile-first** responsive design.
+- **Column grid:** 1-column on mobile, 2-column on tablet (`sm`), 3-column on desktop (`lg`) for the service card grid.
+- **Max content width:** 1152px (`max-w-6xl`) — keeps content readable on wide screens without excessive stretching.
+- **Horizontal margins:** 24px on mobile, 32px on desktop (`px-6 lg:px-8`).
+- **Section vertical rhythm:** 56px (`py-14`) on mobile, 80px (`py-20`) on desktop between major page sections.
+- **Spacing philosophy:** Information-moderate — enough whitespace for clarity, but not so airy that it feels sparse on a professional tool. Card grids use a 24px gutter.
 
 ## Elevation & Depth
 
-<!-- TODO: Describe how visual hierarchy is established. Choose one:
-     A) Flat design: hierarchy through color contrast and borders alone, no shadows.
-     B) Subtle shadows: soft drop shadows on cards and modals (most common for
-        corporate/SaaS — "elevated" cards on a neutral background).
-     C) Layered tonal surfaces: Material-style tonal backgrounds to separate layers.
-     D) Glassmorphism: frosted-glass cards with backdrop blur (if brand is more
-        premium/atmospheric).
-
-     Then describe shadow values if applicable (blur, spread, opacity, color).
--->
+**Subtle shadows** — cards sit above the light green page background using a soft drop shadow (`0 2px 8px rgba(0,0,0,0.06)`). On hover, the shadow deepens slightly (`0 4px 16px rgba(0,0,0,0.10)`) and the card background transitions to `primary-container`. The header uses a hairline `border-b` + `shadow-sm` to separate it from content on scroll. No glassmorphism, no heavy gradients — the design stays grounded and clinical.
 
 ## Shapes
 
-<!-- TODO: Describe the corner-radius language across the UI. Answer:
-     - Sharp (0–4px)? Modern/clinical feel.
-     - Moderately rounded (8–12px)? Common for corporate SaaS.
-     - Fully rounded (pill buttons, etc.)? Friendly, consumer-facing.
-     - Are there components that should remain fully square (e.g. tables, inputs)?
--->
+**Moderately rounded** corners throughout — lending a professional but friendly feel appropriate for a healthcare tool.
+
+- **4px (sm):** Form inputs — precise, slightly clinical.
+- **8px (md):** Modals and dropdowns.
+- **12px (lg):** Buttons and action chips — approachable CTA feel.
+- **16px (xl):** Service cards and hero panels — the primary elevated surface.
+- **9999px (full):** Status pills / badges only.
+
+Tables and dense data grids may use `rounded-sm` (4px) or remain fully square to preserve alignment. Do not mix pill shapes and sharp corners within the same card.
 
 ## Components
 
-<!-- TODO: Describe each component group's style intent. Expand or remove
-     sections as appropriate for this site.
--->
-
 ### Buttons & CTAs
 
-<!-- TODO: How do primary, secondary, and ghost buttons differ visually?
-     What hover/active transitions are used (duration, easing)?
-     Example: "Primary buttons use the brand primary color with white text and
-     a 150ms ease-out background transition on hover."
--->
+Primary buttons use `#006600` background with white text, 12px border radius, and a 150ms `ease-out` background transition on hover (shifts to `primary-container` with `on-primary-container` text). Height is 40px with `10px 24px` padding. Secondary buttons mirror this pattern using the `secondary` color. Ghost buttons are transparent with `primary`-colored text and a subtle `primary-container` fill on hover. All transitions use `duration-150 ease-out`.
 
 ### Cards & Service Tiles
 
-<!-- TODO: The home page features service tiles for Parceiros, Empresas, and
-     Recursos. Describe how these cards look: bordered or shadow-elevated?
-     Icon treatment (filled, outlined, colored)?
--->
+Service tiles (Parceiros, Empresas, Recursos do Sistema) use a white (`surface`) background with a 1px `outline-variant` border and 16px corner radius. A colored header bar in `secondary` with `on-secondary` white text identifies each section. The card body contains a bullet list with small green dot markers. On hover, the card background transitions to `primary-container`. No icons in the initial design — the header bar provides sufficient visual anchoring.
 
 ### Navigation / Header
 
-<!-- TODO: Describe the nav bar. Sticky or static? Transparent-on-scroll?
-     Active link indicator style (underline, dot, color)?
-     Mobile: hamburger drawer or bottom bar?
--->
+The header is **sticky** (`position: sticky; top: 0`) with a white `surface` background and `border-b outline-variant` + `shadow-sm` to separate it from page content on scroll. It is not transparent on scroll. Active nav link is identified by the `primary` color; inactive links are `on-background` with a `primary` hover. The "Acesso ao Sistema" item renders as a primary button. Mobile navigation uses a **hamburger drawer** that slides down below the header bar. The header also displays a date + welcome bar: `{date}. Bem-vindo ao Portal OcupacionalMED`.
 
 ### Forms & Inputs
 
-<!-- TODO: The site has a contact form and a "Acesso ao Sistema" login action.
-     Describe input styling: outlined vs. filled variant, label position
-     (floating or above), focus-ring color.
--->
+**Outlined variant** — `1px border-outline-variant` on a white surface background. Labels are always visible **above** the input (never placeholder-only, for accessibility). Focus state uses a `2px ring primary/40` focus ring with a `primary` border. Error states add a `error`-colored border and message below the field. Inputs are 40px tall with 4px radius. The contact form submit button uses the primary button style.
 
 ### Footer
 
-<!-- TODO: Background color, text hierarchy, link color, any border or divider
-     at the top of the footer?
--->
+Background: `secondary` (#4A864A, medium green). Text: `on-secondary` (white) for the brand name in bold, slightly muted white (80% opacity) for the tagline. No border or divider — the color shift from the page is sufficient. Content: `Portal OcupacionalMED — {year}` and `Rede de Segurança & Medicina Ocupacional`.
 
 ## Do's and Don'ts
 
-<!-- TODO: Add 4–8 guardrails to prevent common design mistakes. Examples:
-
-- Do use `primary` exclusively for the main call-to-action per screen.
-- Don't use more than two font weights in a single UI section.
-- Do maintain WCAG AA contrast ratio (4.5:1) for all body text.
-- Don't mix rounded and sharp corners in the same card component.
-- Do keep form labels always visible (avoid placeholder-only labels for accessibility).
-- Don't use decorative gradients on text — legibility is non-negotiable in a medical context.
--->
+- **Do** use `primary` (#006600) exclusively for the most important call-to-action per screen — never duplicate it across competing CTAs.
+- **Do** maintain WCAG AA contrast ratio (4.5:1) for all body text and interactive labels.
+- **Do** keep form labels always visible above their inputs — placeholder text alone is not accessible.
+- **Do** apply consistent vertical spacing in multiples of 8px throughout the layout.
+- **Don't** use more than two font weights (400 and 700) in a single UI section.
+- **Don't** use `tertiary` (#CC0000) for anything other than critical validation errors or the brand footer wordmark.
+- **Don't** mix pill shapes (rounded-full) with sharp or moderately rounded corners within the same card component.
+- **Don't** apply decorative gradients to text — legibility is non-negotiable in a medical-context application.

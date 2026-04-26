@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+:root {
+  --primary: #006600;
+  --on-primary: #ffffff;
+  --primary-container: #d0efbc;
+  --on-primary-container: #006600;
+  --secondary: #4a864a;
+  --on-secondary: #ffffff;
+  --secondary-container: #b4fcb1;
+  --on-secondary-container: #006600;
+  --tertiary: #cc0000;
+  --on-tertiary: #ffffff;
+  --surface: #ffffff;
+  --on-surface: #1a1a1a;
+  --on-surface-variant: #4a864a;
+  --outline: #000000;
+  --outline-variant: #eaeaea;
+  --error: #cc0000;
+  --on-error: #ffffff;
+  --background: #f0fcf0;
+  --on-background: #1a1a1a;
+}
+
+@theme inline {
+  --color-primary: var(--primary);
+  --color-on-primary: var(--on-primary);
+  --color-primary-container: var(--primary-container);
+  --color-on-primary-container: var(--on-primary-container);
+  --color-secondary: var(--secondary);
+  --color-on-secondary: var(--on-secondary);
+  --color-secondary-container: var(--secondary-container);
+  --color-on-secondary-container: var(--on-secondary-container);
+  --color-tertiary: var(--tertiary);
+  --color-on-tertiary: var(--on-tertiary);
+  --color-surface: var(--surface);
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-outline: var(--outline);
+  --color-outline-variant: var(--outline-variant);
+  --color-error: var(--error);
+  --color-on-error: var(--on-error);
+  --color-background: var(--background);
+  --color-on-background: var(--on-background);
+
+  --font-sans: var(--font-inter), Arial, sans-serif;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--on-background);
+  font-family: var(--font-inter), Arial, sans-serif;
+}
