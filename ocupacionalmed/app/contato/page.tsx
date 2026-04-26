@@ -78,7 +78,7 @@ export default function ContatoPage() {
                 className="text-sm font-bold text-on-secondary"
                 style={{ fontFamily: "Lato, Arial, sans-serif" }}
               >
-                Onde estamos
+                Nos encontre aqui
               </h2>
             </div>
             <div className="px-5 py-5 space-y-5 text-[14px] text-on-surface leading-relaxed">
