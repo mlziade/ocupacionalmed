@@ -96,7 +96,7 @@ export default function ContatoPage() {
                   </p>
                   <p>Rua Vilela Tavares, nº 55</p>
                   <p>Méier &mdash; Rio de Janeiro / RJ</p>
-                  <p>CEP 20725-220</p>
+                  <p>CEP 20275-220</p>
                 </div>
               </div>
 

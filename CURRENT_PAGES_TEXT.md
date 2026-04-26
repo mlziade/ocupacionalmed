@@ -51,7 +51,7 @@ Engenharia de Segurança e Medicina do Trabalho
 
 Rua Vilela Tavares, nº 55
 Méier | Rio de Janeiro - RJ
-CEP 20725-220
+CEP 20275-220
 
 Tel (RJ) 21 2289-3249
 Fax 21 2593-0557

@@ -74,7 +74,7 @@ export default function Footer() {
             <address className="not-italic text-sm text-on-secondary/80 space-y-1 leading-relaxed">
               <p>Rua Vilela Tavares, nº 55</p>
               <p>Méier — Rio de Janeiro / RJ</p>
-              <p>CEP 20725-220</p>
+              <p>CEP 20275-220</p>
               <p className="pt-1">Tel: (21) 2289-3249</p>
             </address>
           </div>
