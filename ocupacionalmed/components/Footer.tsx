@@ -110,7 +110,26 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-8 pt-6 border-t border-on-secondary/20 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-on-secondary/60">
           <p>&copy; {year} OcupacionalMED. Todos os direitos reservados.</p>
-          <p>Desenvolvido com foco em saúde e segurança ocupacional</p>
+          <p>
+            Desenvolvido por{" "}
+            <a
+              href="https://mlziade.com.br"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-on-secondary transition-colors duration-150 underline underline-offset-2"
+            >
+              mlziade
+            </a>
+            {" · "}
+            <a
+              href="https://github.com/mlziade"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-on-secondary transition-colors duration-150 underline underline-offset-2"
+            >
+              github.com/mlziade
+            </a>
+          </p>
         </div>
       </div>
     </footer>
