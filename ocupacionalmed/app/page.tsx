@@ -2,8 +2,110 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useCallback } from "react";
+
+const carouselImages = [
+  { src: "/images/doctor-checking-old-patient.webp",         alt: "Médico atendendo paciente idoso",          caption: "Acompanhamento contínuo da saúde do trabalhador" },
+  { src: "/images/doctor-taking-pressure-desk.webp",         alt: "Médico aferindo pressão em consultório",   caption: "Exames realizados com agilidade e precisão" },
+  { src: "/images/doctor-taking-pressure-hospital-bed.webp", alt: "Atendimento à beira do leito",             caption: "Atendimento completo em qualquer ambiente" },
+  { src: "/images/doctor-taking-pressure-sitting.webp",      alt: "Consulta médica ocupacional",              caption: "Consultas ocupacionais para toda a sua equipe" },
+  { src: "/images/doctor-torso-posing.webp",                 alt: "Profissional de saúde ocupacional",        caption: "Profissionais especializados em medicina do trabalho" },
+];
+
+const slideVariants = {
+  enter: (dir: number) => ({ x: dir > 0 ? "100%" : "-100%", opacity: 0 }),
+  center: { x: 0, opacity: 1 },
+  exit:  (dir: number) => ({ x: dir > 0 ? "-100%" : "100%", opacity: 0 }),
+};
+
+function Carousel() {
+  const [index, setIndex] = useState(0);
+  const [dir, setDir] = useState(1);
+
+  const go = useCallback((next: number) => {
+    setDir(next > index ? 1 : -1);
+    setIndex(next);
+  }, [index]);
+
+  const prev = () => go((index - 1 + carouselImages.length) % carouselImages.length);
+  const next = () => go((index + 1) % carouselImages.length);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setDir(1);
+      setIndex((i) => (i + 1) % carouselImages.length);
+    }, 4000);
+    return () => clearInterval(id);
+  }, []);
+
+  return (
+    <div className="relative w-full h-72 lg:h-96 overflow-hidden rounded-2xl shadow-sm">
+      <AnimatePresence initial={false} custom={dir}>
+        <motion.div
+          key={index}
+          custom={dir}
+          variants={slideVariants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+          className="absolute inset-0"
+        >
+          <Image
+            src={carouselImages[index].src}
+            alt={carouselImages[index].alt}
+            fill
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-black/20" />
+          <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/70 to-transparent px-6 pb-10 pt-12">
+            <p className="text-white text-sm lg:text-base font-bold drop-shadow"
+               style={{ fontFamily: "Lato, Arial, sans-serif" }}>
+              {carouselImages[index].caption}
+            </p>
+          </div>
+        </motion.div>
+      </AnimatePresence>
+
+      {/* Prev / Next */}
+      <button
+        onClick={prev}
+        className="absolute left-3 top-1/2 -translate-y-1/2 z-10 bg-black/40 hover:bg-black/60
+                   text-white rounded-full p-2 transition-colors duration-150"
+        aria-label="Anterior"
+      >
+        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+      <button
+        onClick={next}
+        className="absolute right-3 top-1/2 -translate-y-1/2 z-10 bg-black/40 hover:bg-black/60
+                   text-white rounded-full p-2 transition-colors duration-150"
+        aria-label="Próximo"
+      >
+        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+
+      {/* Dots */}
+      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex gap-2">
+        {carouselImages.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => go(i)}
+            className={`w-2 h-2 rounded-full transition-all duration-200 ${
+              i === index ? "bg-white scale-125" : "bg-white/50 hover:bg-white/80"
+            }`}
+            aria-label={`Ir para imagem ${i + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
 
 const services = [
   {
@@ -193,6 +295,11 @@ export default function HomePage() {
             </motion.div>
           ))}
         </div>
+      </section>
+
+      {/* ── Carousel ── */}
+      <section className="max-w-6xl mx-auto px-6 lg:px-8 pb-14 lg:pb-20">
+        <Carousel />
       </section>
 
       {/* ── CTA strip ── */}
