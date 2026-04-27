@@ -3,6 +3,39 @@
 import { useState, FormEvent } from "react";
 import { motion } from "framer-motion";
 
+function CopyRow({ text, align = "start", children }: { text: string; align?: "start" | "center"; children: React.ReactNode }) {
+  const [copied, setCopied] = useState(false);
+
+  function handleCopy() {
+    navigator.clipboard.writeText(text).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  }
+
+  return (
+    <div
+      onClick={handleCopy}
+      title={copied ? "Copiado!" : "Clique para copiar"}
+      className={`group flex ${align === "center" ? "items-center" : "items-start"} gap-0.5 cursor-pointer`}
+    >
+      {children}
+      <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-150 ml-1 flex-shrink-0 text-on-surface-variant group-hover:text-primary">
+        {copied ? (
+          <svg className="w-3.5 h-3.5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+        ) : (
+          <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+            <rect x="9" y="9" width="13" height="13" rx="2" />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+          </svg>
+        )}
+      </span>
+    </div>
+  );
+}
+
 const MAP_SRC =
   "https://maps.google.com/maps?q=Rua+Vilela+Tavares,+55,+M%C3%A9ier,+Rio+de+Janeiro,+RJ,+20725-220,+Brasil&output=embed&z=16&hl=pt-BR";
 
@@ -127,9 +160,13 @@ export default function ContatoPage() {
                      style={{ fontFamily: "Lato, Arial, sans-serif" }}>
                     Endereço
                   </p>
-                  <p>Rua Vilela Tavares, nº 55</p>
-                  <p>Méier &mdash; Rio de Janeiro / RJ</p>
-                  <p>CEP 20275-220</p>
+                  <CopyRow text="Rua Vilela Tavares, nº 55, Méier — Rio de Janeiro / RJ, CEP 20275-220">
+                    <div>
+                      <p>Rua Vilela Tavares, nº 55</p>
+                      <p>Méier &mdash; Rio de Janeiro / RJ</p>
+                      <p>CEP 20275-220</p>
+                    </div>
+                  </CopyRow>
                 </div>
               </div>
 
@@ -144,7 +181,9 @@ export default function ContatoPage() {
                      style={{ fontFamily: "Lato, Arial, sans-serif" }}>
                     Telefone
                   </p>
-                  <p>Tel: (21) 2289-3249</p>
+                  <CopyRow text="(21) 2289-3249" align="center">
+                    <p>Tel: (21) 2289-3249</p>
+                  </CopyRow>
                   <a
                     href="https://wa.me/5521999999999"
                     target="_blank"
