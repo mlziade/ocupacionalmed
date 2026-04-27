@@ -49,7 +49,7 @@ export default function ParceirosPage() {
             <div
               key={partner.name}
               className="bg-surface border border-outline-variant rounded-xl overflow-hidden shadow-sm
-                         hover:shadow-md transition-all duration-200"
+                         hover:shadow-md transition-all duration-200 flex flex-col"
             >
               <div className="bg-secondary px-5 py-3">
                 <h2
@@ -59,14 +59,16 @@ export default function ParceirosPage() {
                   {partner.name}
                 </h2>
               </div>
-              <div className="px-5 py-6 flex flex-col items-center gap-4">
-                <Image
-                  src={partner.logo}
-                  alt={partner.name}
-                  width={partner.logoWidth}
-                  height={partner.logoHeight}
-                  className="max-h-16 w-auto object-contain"
-                />
+              <div className="px-5 py-6 flex flex-col items-center gap-4 flex-1">
+                <div className="flex-1 flex items-end justify-center">
+                  <Image
+                    src={partner.logo}
+                    alt={partner.name}
+                    width={partner.logoWidth}
+                    height={partner.logoHeight}
+                    className="max-h-16 w-auto object-contain"
+                  />
+                </div>
                 <p className="text-[13px] text-on-surface-variant text-center leading-relaxed">
                   {partner.description}
                 </p>
