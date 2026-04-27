@@ -1,13 +1,46 @@
 "use client";
 
 import { useState, FormEvent } from "react";
+import { motion } from "framer-motion";
 
 const MAP_SRC =
   "https://maps.google.com/maps?q=Rua+Vilela+Tavares,+55,+M%C3%A9ier,+Rio+de+Janeiro,+RJ,+20725-220,+Brasil&output=embed&z=16&hl=pt-BR";
 
+function LockIcon({ unlocked }: { unlocked: boolean }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="w-4 h-4 flex-shrink-0"
+    >
+      {/* Shackle — rendered behind the body so the body edge masks the legs cleanly */}
+      <motion.g
+        animate={{ rotate: unlocked ? -45 : 0 }}
+        style={{ transformOrigin: "8px 11px" }}
+        transition={{ type: "spring", stiffness: 380, damping: 22 }}
+      >
+        <path d="M8 11V7a4 4 0 018 0v4" />
+      </motion.g>
+      {/* Body — rendered on top so it naturally cuts the shackle at the boundary */}
+      <rect x="3" y="11" width="18" height="11" rx="2" />
+    </svg>
+  );
+}
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export default function ContatoPage() {
   const [form, setForm] = useState({ nome: "", email: "", telefone: "", mensagem: "" });
   const [submitted, setSubmitted] = useState(false);
+
+  const isValid =
+    form.nome.trim().length > 0 &&
+    EMAIL_RE.test(form.email) &&
+    form.mensagem.trim().length > 0;
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -31,7 +64,7 @@ export default function ContatoPage() {
             Fale Conosco
           </h1>
           <p className="text-sm text-on-primary/80 mt-2">
-            Estamos prontos para atendê-lo. Entre em contato por telefone ou pelo formulário abaixo.
+            Estamos prontos para atendê-lo. Entre em contato por telefone, Whatsapp ou pelo formulário abaixo.
           </p>
         </div>
       </section>
@@ -217,9 +250,10 @@ export default function ContatoPage() {
                   type="submit"
                   className="w-full font-bold text-sm px-6 py-3 bg-primary text-on-primary rounded-lg
                              hover:bg-primary-container hover:text-on-primary-container
-                             transition-colors duration-150"
+                             transition-colors duration-150 flex items-center justify-center gap-2"
                   style={{ fontFamily: "Lato, Arial, sans-serif" }}
                 >
+                  <LockIcon unlocked={isValid} />
                   Enviar Mensagem
                 </button>
               </form>
