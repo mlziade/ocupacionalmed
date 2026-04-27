@@ -11,6 +11,16 @@ const nextConfig: NextConfig = {
   env: {
     NEXT_PUBLIC_BASE_PATH: "/ocupacionalmed",
   },
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/ocupacionalmed",
+        permanent: false,
+        basePath: false,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
