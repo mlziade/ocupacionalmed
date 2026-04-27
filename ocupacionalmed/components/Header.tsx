@@ -61,7 +61,9 @@ export default function Header() {
               </Link>
             ))}
             <a
-              href="#"
+              href="https://ocupacionalmed.com.br/login/login.action"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-sm font-bold px-4 py-2 bg-primary text-on-primary rounded-lg
                          hover:bg-primary-container hover:text-on-primary-container
                          transition-colors duration-150"
@@ -111,7 +113,9 @@ export default function Header() {
             </Link>
           ))}
           <a
-            href="#"
+            href="https://ocupacionalmed.com.br/login/login.action"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-sm font-bold px-4 py-2 bg-primary text-on-primary rounded-lg text-center
                        hover:bg-primary-container hover:text-on-primary-container transition-colors duration-150"
           >
