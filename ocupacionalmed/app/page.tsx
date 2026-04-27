@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 const services = [
   {
@@ -50,6 +51,8 @@ const cardVariants = {
 };
 
 export default function HomePage() {
+  const [doctorReady, setDoctorReady] = useState(false);
+
   return (
     <>
       {/* ── Hero ── */}
@@ -64,7 +67,12 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-black/50" />
 
         {/* Doctor cut-out */}
-        <div className="absolute bottom-0 right-0 h-full hidden lg:block pointer-events-none select-none">
+        <motion.div
+          initial={{ x: "100%", opacity: 0 }}
+          animate={doctorReady ? { x: 0, opacity: 1 } : { x: "100%", opacity: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="absolute bottom-0 right-0 h-full hidden lg:block pointer-events-none select-none"
+        >
           <Image
             src="/images/medica-em-pe-transparente.png"
             alt=""
@@ -72,8 +80,9 @@ export default function HomePage() {
             height={520}
             className="h-full w-auto object-contain object-bottom drop-shadow-2xl"
             priority
+            onLoad={() => setDoctorReady(true)}
           />
-        </div>
+        </motion.div>
 
         <div className="relative z-10 max-w-6xl mx-auto px-6 lg:px-8 py-16 lg:py-24 w-full">
           <motion.div
