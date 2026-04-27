@@ -125,11 +125,14 @@ export default function ServicosPage() {
 
                 {/* Content */}
                 <div className="flex-1 min-w-0 p-7 lg:p-10 flex flex-col justify-center">
-                  <div
-                    className="inline-block self-start bg-secondary text-on-secondary text-lg font-black px-5 py-2 rounded-xl mb-5"
-                    style={{ fontFamily: "Lato, Arial, sans-serif" }}
-                  >
-                    {service.title}
+                  <div className="mb-5">
+                    <h2
+                      className="text-2xl font-black text-on-surface"
+                      style={{ fontFamily: "Lato, Arial, sans-serif" }}
+                    >
+                      {service.title}
+                    </h2>
+                    <div className="mt-2 w-10 h-1 rounded-full bg-secondary" />
                   </div>
                   <p className="text-[14px] text-on-surface-variant leading-relaxed mb-6">
                     {service.summary}
